@@ -11,7 +11,8 @@ const TodoList = () => {
     }
   };
   const handleDeleteTodo = (index:any) => {
-      
+      const newTodos = [...todos];
+      newTodos.splice(index, 1)
   };
   const handleToggleTodo = (index:any) => {};
   return (
