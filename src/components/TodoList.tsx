@@ -13,8 +13,13 @@ const TodoList = () => {
   const handleDeleteTodo = (index:any) => {
       const newTodos = [...todos];
       newTodos.splice(index, 1)
+      setTodos(newTodos)
   };
-  const handleToggleTodo = (index:any) => {};
+  const handleToggleTodo = (index:any) => {
+      const newTodos = [...todos];
+      newTodos[index].checked = !newTodos[index].checked
+      setTodos(newTodos)
+  };
   return (
     <div>
       <h1>Todo List</h1>
@@ -26,13 +31,14 @@ const TodoList = () => {
       <button onClick={handleAddTodo} >Add</button>
       <ul >
         {todos.map((e, index) => (
-           <li key={index} list-style={'none'} >
+           <li key={index} style={{listStyleType:'none'}}  >
             <input 
                type="checkbox" 
                checked={e.checked}
                onChange={()=>handleToggleTodo(index)}
                />
-            <span>{e.text}</span> 
+            <span 
+               style={{textDecoration: e.checked ? "line-through":"none"}}>{e.text}</span> 
             <button onClick={()=>handleDeleteTodo(index)}> Delete</button>
            </li> ))}
       </ul>
