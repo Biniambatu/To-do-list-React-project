@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.css';
 
 const TodoList = () => {
   const [todos, setTodos] = useState<{ text: string; checked: boolean }[]>([]);
@@ -23,15 +24,15 @@ const TodoList = () => {
   return (
     <div>
       <h1>Todo List</h1>
-      <input
+      <input className="input-group mb-3 " width='10px'
         type="text"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
       />
-      <button onClick={handleAddTodo} >Add</button>
+      <button onClick={handleAddTodo} className="btn btn-primary" >Add</button>
       <ul >
         {todos.map((e, index) => (
-           <li key={index} style={{listStyleType:'none'}}  >
+           <li key={index}  list-style={'none'} >
             <input 
                type="checkbox" 
                checked={e.checked}
@@ -39,7 +40,7 @@ const TodoList = () => {
                />
             <span 
                style={{textDecoration: e.checked ? "line-through":"none"}}>{e.text}</span> 
-            <button onClick={()=>handleDeleteTodo(index)}> Delete</button>
+            <button onClick={()=>handleDeleteTodo(index)} className="btn btn-danger"> Delete</button>
            </li> ))}
       </ul>
     </div>
